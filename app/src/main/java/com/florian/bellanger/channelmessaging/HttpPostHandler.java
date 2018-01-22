@@ -28,7 +28,7 @@ import javax.net.ssl.HttpsURLConnection;
  */
 
 
-public class HttpPostHandler extends AsyncTask<String, Integer, String> {
+public class HttpPostHandler extends AsyncTask<CalledInformation, Integer, String> {
 
     private ArrayList<OnDownloadListener> mesListeners = new ArrayList<OnDownloadListener>();
 
@@ -39,24 +39,17 @@ public class HttpPostHandler extends AsyncTask<String, Integer, String> {
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
-
-
-
-        for (OnDownloadListener oneListener : mesListeners)
-        {
-
+        for (OnDownloadListener oneListener : mesListeners) {
             oneListener.onDownloadComplete(s);
         }
 
     }
 
     @Override
-    protected String doInBackground(String... params) {
+    protected String doInBackground(CalledInformation... params) {
 //pour réutilisé cela et pas recrer une classe spécial, il faut modifier le premier truc de asyncTask pour mettre un objet perso qui contient un arraylist
-        HashMap<String, String> coupleIDPWD = new HashMap<String, String>();
-        coupleIDPWD.put("username", params[0]);
-        coupleIDPWD.put("password", params[1]);
-        String monResultat = performPostCall("http://www.raphaelbischof.fr/messaging/?function=connect", coupleIDPWD);
+
+        String monResultat = performPostCall(params[0].getUrl(), params[0].getCoupleIDPWD());
 
 
         return monResultat;
