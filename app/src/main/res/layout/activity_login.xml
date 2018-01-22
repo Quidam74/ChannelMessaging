@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:weightSum="1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="    id"
+            android:id="@+id/idlbl" />
+
+        <EditText
+            android:layout_width="287dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/idBox"
+            android:layout_marginLeft="70dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="68dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="password"
+            android:id="@+id/pwdlbl" />
+
+        <EditText
+            android:layout_width="281dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/pwdBox"
+            android:layout_marginLeft="40dp" />
+    </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login !"
+        android:id="@+id/loginBtn"
+        android:layout_gravity="center_horizontal" />
+
+</LinearLayout>
