@@ -1,11 +1,12 @@
 package com.florian.bellanger.channelmessaging;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
  * Created by bellangf on 22/01/2018.
  */
-public class ChannelData {
+public class ChannelData{
     private List<UnChannel> channels;
 
     @Override

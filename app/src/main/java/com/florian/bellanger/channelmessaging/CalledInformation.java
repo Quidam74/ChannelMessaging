@@ -36,7 +36,6 @@ public class CalledInformation {
     public void setUrl(String url) {
         this.url = url;
     }
-    //    coupleIDPWD.put("username", params[0]);
-  //  coupleIDPWD.put("password", params[1]);
+
 
 }

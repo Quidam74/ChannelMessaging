@@ -44,8 +44,8 @@ public class UnChannel {
         return name;
     }
 
-    public int getConnectedusers() {
-        return connectedusers;
+    public String getConnectedusers() {
+        return String.valueOf(connectedusers);
     }
 }
 
