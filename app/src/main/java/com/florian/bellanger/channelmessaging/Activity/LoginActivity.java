@@ -1,4 +1,4 @@
-package com.florian.bellanger.channelmessaging;
+package com.florian.bellanger.channelmessaging.Activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -6,11 +6,16 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.florian.bellanger.channelmessaging.Activity.ChannelListActivity;
+import com.florian.bellanger.channelmessaging.CalledInformation;
+import com.florian.bellanger.channelmessaging.HttpPostHandler;
+import com.florian.bellanger.channelmessaging.InfoConnection;
+import com.florian.bellanger.channelmessaging.OnDownloadListener;
+import com.florian.bellanger.channelmessaging.R;
 import com.google.gson.Gson;
 
 
@@ -32,6 +37,9 @@ public class LoginActivity extends Activity implements
         loginBtp = (Button) findViewById(R.id.loginBtn);
         pwdBox = (EditText) findViewById(R.id.pwdBox);
         idBox = (EditText) findViewById(R.id.idBox);
+
+        idBox.setText("fbell");
+        pwdBox.setText("florianbellanger");
 
         loginBtp.setOnClickListener(this);
     }

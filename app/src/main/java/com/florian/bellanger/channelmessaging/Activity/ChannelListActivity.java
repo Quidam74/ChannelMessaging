@@ -1,18 +1,20 @@
-package com.florian.bellanger.channelmessaging;
+package com.florian.bellanger.channelmessaging.Activity;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.wifi.p2p.WifiP2pManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 
+import com.florian.bellanger.channelmessaging.CalledInformation;
+import com.florian.bellanger.channelmessaging.ClasseMetier.ChannelData;
+import com.florian.bellanger.channelmessaging.HttpPostHandler;
+import com.florian.bellanger.channelmessaging.mesArrayAdapter.MySimpleArrayAdapter;
+import com.florian.bellanger.channelmessaging.OnDownloadListener;
+import com.florian.bellanger.channelmessaging.R;
 import com.google.gson.Gson;
 
 /**
@@ -53,7 +55,7 @@ implements OnDownloadListener, AdapterView.OnItemClickListener {
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Intent unChanel =new Intent(this,ChannelActivity.class);
 
-        unChanel.putExtra("ChannelID",id);
+        unChanel.putExtra("ChannelID",String.valueOf(id));
 
         startActivity(unChanel);
 
@@ -64,7 +66,7 @@ implements OnDownloadListener, AdapterView.OnItemClickListener {
     @Override
     public void onDownloadComplete(String downloadedContent) {
         Gson gson = new Gson();
-        //Log.i("ezaeaz",downloadedContent);
+
         ChannelData lesChanel = gson.fromJson(downloadedContent,ChannelData.class);
         Log.i("ezaeaz",lesChanel.toString());
 

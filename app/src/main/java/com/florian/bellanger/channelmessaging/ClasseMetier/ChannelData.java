@@ -1,6 +1,5 @@
-package com.florian.bellanger.channelmessaging;
+package com.florian.bellanger.channelmessaging.ClasseMetier;
 
-import java.util.HashMap;
 import java.util.List;
 
 /**

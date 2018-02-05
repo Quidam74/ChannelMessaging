@@ -1,4 +1,4 @@
-package com.florian.bellanger.channelmessaging;
+package com.florian.bellanger.channelmessaging.ClasseMetier;
 
 /**
  * Created by bellangf on 22/01/2018.
