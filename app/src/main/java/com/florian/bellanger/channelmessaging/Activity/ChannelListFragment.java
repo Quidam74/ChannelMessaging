@@ -1,36 +1,42 @@
 package com.florian.bellanger.channelmessaging.Activity;
 
-import android.app.Activity;
-import android.content.Intent;
+
+import android.app.Fragment;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.AdapterView;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.florian.bellanger.channelmessaging.CalledInformation;
 import com.florian.bellanger.channelmessaging.ClasseMetier.ChannelData;
 import com.florian.bellanger.channelmessaging.HttpPostHandler;
-import com.florian.bellanger.channelmessaging.mesArrayAdapter.MySimpleArrayAdapter;
 import com.florian.bellanger.channelmessaging.OnDownloadListener;
 import com.florian.bellanger.channelmessaging.R;
+import com.florian.bellanger.channelmessaging.mesArrayAdapter.MySimpleArrayAdapter;
 import com.google.gson.Gson;
 
-/**
- * Created by bellangf on 22/01/2018.
- */
-public class ChannelListActivity extends Activity
-implements OnDownloadListener, AdapterView.OnItemClickListener {
+public class ChannelListFragment extends Fragment implements OnDownloadListener {
+    private ListView lvFragment;
+
     public static final String PREFS_NAME = "MyPrefsFile";
-    private ListView mainListView;
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.frag_gauche_channel_list, container);
+        lvFragment = (ListView) v.findViewById(R.id.mainlistview);
+
+
+
+
+        return v;
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.channel_list_activity);
-
-        mainListView = (ListView) findViewById(R.id.mainlistview);
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
 
         HttpPostHandler maRequete = new HttpPostHandler();
         maRequete.addOnDownloadListener(this);
@@ -38,28 +44,17 @@ implements OnDownloadListener, AdapterView.OnItemClickListener {
         CalledInformation getAllChannel = new CalledInformation();
         getAllChannel.setUrl("http://www.raphaelbischof.fr/messaging/?function=getchannels");
 
-        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+        SharedPreferences settings = this.getActivity().getSharedPreferences(PREFS_NAME, 0);
         String jeton = settings.getString("MyToken", "0");
         getAllChannel.setCoupleIDPWD("accesstoken", jeton);
 
-        mainListView.setOnItemClickListener(this);
+       lvFragment.setOnItemClickListener((ChannelListActivity)getActivity());
 
         maRequete.execute(getAllChannel);
 
 
-
-
+        lvFragment.setOnItemClickListener((ChannelListActivity)getActivity());
     }
-
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Intent unChanel =new Intent(this, ChannelActivity.class);
-        unChanel.putExtra("ChannelID",String.valueOf(id));
-
-        startActivity(unChanel);
-    }
-
-
 
     @Override
     public void onDownloadComplete(String downloadedContent) {
@@ -68,8 +63,7 @@ implements OnDownloadListener, AdapterView.OnItemClickListener {
         ChannelData lesChanel = gson.fromJson(downloadedContent,ChannelData.class);
         Log.i("ezaeaz",lesChanel.toString());
 
-        mainListView.setAdapter(
-                new MySimpleArrayAdapter(ChannelListActivity.this, lesChanel ));
+        lvFragment.setAdapter(new MySimpleArrayAdapter(ChannelListFragment.this.getActivity(), lesChanel ));
 
     }
 
