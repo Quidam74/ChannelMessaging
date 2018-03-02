@@ -53,12 +53,9 @@ implements OnDownloadListener, AdapterView.OnItemClickListener {
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Intent unChanel =new Intent(this,ChannelActivity.class);
-
+        Intent unChanel =new Intent(this, ChannelActivity.class);
         unChanel.putExtra("ChannelID",String.valueOf(id));
-
         startActivity(unChanel);
-
     }
 
 
