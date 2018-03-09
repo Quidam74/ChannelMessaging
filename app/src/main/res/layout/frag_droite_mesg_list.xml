@@ -10,26 +10,33 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="ezaraz"
+        android:text="channel 1"
         android:id="@+id/nameOfChanel"
         android:layout_gravity="center_horizontal" />
     <ListView
         android:layout_width="match_parent"
         android:name="com.florian.bellanger.channelmessaging.Activity.MessageFragement"
-        android:layout_height="433dp"
+        android:layout_height="219dp"
         android:id="@+id/ListeMessage"
         android:layout_gravity="center_horizontal" />
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="horizontal" android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
+        android:layout_height="match_parent"
+        android:weightSum="1">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Send pick"
+            android:id="@+id/sendphoto" />
 
         <EditText
+
             android:layout_width="265dp"
             android:layout_height="match_parent"
-            android:id="@+id/msg"
-            android:layout_gravity="center_horizontal" />
+            android:id="@+id/msgbox"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="0.91" />
 
         <Button
             android:layout_width="wrap_content"

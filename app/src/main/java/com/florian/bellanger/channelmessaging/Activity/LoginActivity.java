@@ -62,10 +62,10 @@ public class LoginActivity extends Activity implements
     public void onDownloadComplete(String downloadedContent) {
         if (downloadedContent.contains("Ok"))
         {
-            Log.i("zae", downloadedContent);
+
             Gson gson = new Gson();
             InfoConnection suisjeLog = gson.fromJson(downloadedContent, InfoConnection.class);
-            Log.i("zae", suisjeLog.toString());
+
             SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
             SharedPreferences.Editor editor = settings.edit();
             editor.putString("MyToken",suisjeLog.getAccesstoken());

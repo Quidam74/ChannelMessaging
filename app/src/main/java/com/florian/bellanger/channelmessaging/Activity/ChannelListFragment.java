@@ -1,14 +1,16 @@
 package com.florian.bellanger.channelmessaging.Activity;
 
 
-import android.app.Fragment;
+
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.florian.bellanger.channelmessaging.CalledInformation;
@@ -19,14 +21,16 @@ import com.florian.bellanger.channelmessaging.R;
 import com.florian.bellanger.channelmessaging.mesArrayAdapter.MySimpleArrayAdapter;
 import com.google.gson.Gson;
 
-public class ChannelListFragment extends Fragment implements OnDownloadListener {
+public class ChannelListFragment extends Fragment implements OnDownloadListener, View.OnClickListener {
     private ListView lvFragment;
+    private Button sendNudes;
 
     public static final String PREFS_NAME = "MyPrefsFile";
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.frag_gauche_channel_list, container);
         lvFragment = (ListView) v.findViewById(R.id.mainlistview);
+
 
 
 
@@ -61,7 +65,7 @@ public class ChannelListFragment extends Fragment implements OnDownloadListener 
         Gson gson = new Gson();
 
         ChannelData lesChanel = gson.fromJson(downloadedContent,ChannelData.class);
-        Log.i("ezaeaz",lesChanel.toString());
+
 
         lvFragment.setAdapter(new MySimpleArrayAdapter(ChannelListFragment.this.getActivity(), lesChanel ));
 
@@ -73,4 +77,8 @@ public class ChannelListFragment extends Fragment implements OnDownloadListener 
     }
 
 
+    @Override
+    public void onClick(View v) {
+
+    }
 }

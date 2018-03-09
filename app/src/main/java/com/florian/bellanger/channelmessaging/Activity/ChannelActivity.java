@@ -38,6 +38,7 @@ public class ChannelActivity extends Activity
     private Handler handler;
     public static final String PREFS_NAME = "MyPrefsFile";
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +49,7 @@ public class ChannelActivity extends Activity
         chanelName = (TextView) findViewById(R.id.nameOfChanel);
         listeMessage = (ListView) findViewById(R.id.ListeMessage);
         bouttonSendNudes = (Button) findViewById(R.id.sendNudes);
-        msgbox = (EditText) findViewById(R.id.msg);
+        msgbox = (EditText) findViewById(R.id.msgbox);
         bouttonSendNudes.setOnClickListener(this);
 
         final Bundle extras = getIntent().getExtras();
@@ -65,12 +66,8 @@ public class ChannelActivity extends Activity
                 final CalledInformation messages = new CalledInformation();
                 getAllMessages.addOnDownloadListener(ChannelActivity.this);
                 messages.setCoupleIDPWD("accesstoken", settings.getString("MyToken", "error"));
-                if(! (extras.getString("ChannelID")==null))
-                    messages.setCoupleIDPWD("channelid", extras.getString("ChannelID"));
-                else {
-                    String a ="1";
-                    messages.setCoupleIDPWD("channelid", a);
-                }
+                messages.setCoupleIDPWD("channelid", extras.getString("ChannelID"));
+
 
                 messages.setUrl("http://www.raphaelbischof.fr/messaging/?function=getmessages");
                 getAllMessages.execute(messages);
@@ -86,7 +83,7 @@ public class ChannelActivity extends Activity
         Gson gson = new Gson();
         ListMessage lesMessages = gson.fromJson(downloadedContent, ListMessage.class);
 
-        Log.i("a",lesMessages.toString());
+
         listeMessage.setAdapter(new MyAAMessage(ChannelActivity.this, lesMessages));
     }
 
