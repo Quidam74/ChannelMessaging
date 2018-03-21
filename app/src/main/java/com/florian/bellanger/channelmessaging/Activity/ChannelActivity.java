@@ -49,7 +49,7 @@ public class ChannelActivity extends Activity
         bouttonSendNudes.setOnClickListener(this);
 
         final Bundle extras = getIntent().getExtras();
-        chanelName.setText("channel" + extras.getString("ChannelID"));
+        //chanelName.setText("channel" + extras.getString("ChannelID"));
 
         handler = new Handler();
 
