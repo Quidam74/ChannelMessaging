@@ -6,7 +6,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.util.Log;
 
-import com.google.gson.Gson;
+import com.florian.bellanger.channelmessaging.CalledInformation;import com.florian.bellanger.channelmessaging.OnDownloadListener;import com.google.gson.Gson;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

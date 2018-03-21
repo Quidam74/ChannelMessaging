@@ -1,50 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@color/proColor1"
+    android:id="@+id/llBackground">
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:weightSum="1">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="    id"
-            android:id="@+id/idlbl" />
+    <ImageView
+        android:layout_width="226dp"
+        android:layout_height="215dp"
+        android:id="@+id/mIvLogo"
+        android:src="@drawable/channel_messaging_logo" />
 
-        <EditText
-            android:layout_width="287dp"
+    <EditText
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:id="@+id/idBox"
-            android:layout_marginLeft="70dp" />
-    </LinearLayout>
+            android:hint="username"
+            android:textColorHint="@color/fontColor1"
+            android:textColor="@color/white"
+            android:layout_centerHorizontal="true"
+            android:background="@android:color/transparent"
+           />
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="68dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="password"
-            android:id="@+id/pwdlbl" />
 
         <EditText
-            android:layout_width="281dp"
+            android:layout_marginTop="25dp"
+            android:background="@android:color/transparent"
+            android:textColorHint="@color/fontColor1"
+            android:textColor="@color/white"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:id="@+id/pwdBox"
-            android:layout_marginLeft="40dp" />
-    </LinearLayout>
+            android:hint="password"
+            android:layout_centerHorizontal="true"
+             />
+
 
     <Button
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="VALIDER"
+        android:id="@+id/loginBtn"
+        android:layout_centerHorizontal="true"
+        android:background="@color/proColor2"
+        android:textColor="@color/textboutton"
+        android:layout_marginTop="50dp"/>
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login !"
-        android:id="@+id/loginBtn"
-        android:layout_gravity="center_horizontal" />
+        android:text="ne pas clicker sur le boutton inutile"
+        android:id="@+id/textView2"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:textColor="@color/fontColor1"/>
+
 
 </LinearLayout>

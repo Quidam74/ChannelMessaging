@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import android.content.SharedPreferences;
 
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
@@ -49,7 +48,7 @@ public class MessageFragment extends Fragment implements View.OnClickListener, A
     public View onCreateView(LayoutInflater inflater, ViewGroup
             container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.frag_droite_mesg_list, container);
-        tvExample = (TextView) v.findViewById(R.id.textView);
+
         bouttonSendphoto  = (Button) v.findViewById(R.id.sendphoto);
         msgbox = (EditText) v.findViewById(R.id.msgbox);
         chanelName = (TextView) v.findViewById(R.id.nameOfChanel);

@@ -4,22 +4,18 @@ import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.florian.bellanger.channelmessaging.CalledInformation;
-import com.florian.bellanger.channelmessaging.ClasseMetier.InterpreteMessage;
 import com.florian.bellanger.channelmessaging.HttpPostHandler;
 import com.florian.bellanger.channelmessaging.ClasseMetier.ListMessage;
 import com.florian.bellanger.channelmessaging.OnDownloadListener;
 import com.florian.bellanger.channelmessaging.R;
 import com.florian.bellanger.channelmessaging.mesArrayAdapter.MyAAMessage;
-import com.florian.bellanger.channelmessaging.mesArrayAdapter.MySimpleArrayAdapter;
 import com.google.gson.Gson;
 
 import java.util.Timer;
