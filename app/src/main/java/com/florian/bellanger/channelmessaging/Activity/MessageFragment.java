@@ -43,6 +43,7 @@ public class MessageFragment extends Fragment implements View.OnClickListener, A
     private EditText msgbox;
     private Handler handler;
     public static final String PREFS_NAME = "MyPrefsFile";
+    private Timer t;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup
@@ -69,7 +70,8 @@ public class MessageFragment extends Fragment implements View.OnClickListener, A
         handler = new Handler();
 
 
-        new Timer().scheduleAtFixedRate(new TimerTask() {
+        t = new Timer();
+                t.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
                 final HttpPostHandler getAllMessages = new HttpPostHandler();
@@ -93,7 +95,7 @@ public class MessageFragment extends Fragment implements View.OnClickListener, A
                                                          @Override
 
                                                          public void onDownloadComplete(String downloadedContent) {
-                                                             if (downloadedContent.length() > 200) {
+                                                             if (downloadedContent.length() > 200&&getActivity()!=null) {
                                                                  Gson gson = new Gson();
                                                                  ListMessage lesMessages = gson.fromJson(downloadedContent, ListMessage.class);
 
@@ -154,5 +156,11 @@ public class MessageFragment extends Fragment implements View.OnClickListener, A
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        t.cancel();
     }
 }

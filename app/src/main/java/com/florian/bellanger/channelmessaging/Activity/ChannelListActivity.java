@@ -1,6 +1,7 @@
 package com.florian.bellanger.channelmessaging.Activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -34,6 +35,9 @@ implements AdapterView.OnItemClickListener {
         ChannelListFragment fragA = (ChannelListFragment) getSupportFragmentManager().findFragmentById(R.id.fragmentA_ID);
         MessageFragment fragB = (MessageFragment) getSupportFragmentManager().findFragmentById(R.id.fragmentB_ID);
         getIntent().putExtra("ChannelID", String.valueOf(id));
+        SharedPreferences settings = getSharedPreferences(PREFS_NAME,0);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putInt("ChannelID",(int) id );
 
         if(fragB == null|| !fragB.isInLayout()){
             Intent i = new Intent(getApplicationContext(),ChannelActivity.class);
